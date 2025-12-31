@@ -210,7 +210,7 @@ const Carousel2 = () => {
                         fontSize: "48px",
                         color: "#171717",
                         textAlign: "center",
-                        marginBottom: "60px",
+                        marginBottom: "5px",
                         letterSpacing: "0.01em",
                         width: "100%",
                         paddingRight: "60px",
