@@ -106,7 +106,7 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
         let scale = 1;
 
         if (isPast) {
-          translateY = "-120%";
+          translateY = "-100%";
           opacity = 0;
           scale = 0.95;
         } else if (isActive) {
@@ -114,8 +114,8 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
           opacity = 1;
           scale = 1;
         } else if (isNext) {
-          translateY = "120%";
-          opacity = 0;
+          translateY = "100%";
+          opacity = 0.8;
           scale = 1.05;
         }
 
@@ -128,6 +128,8 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
             className="absolute inset-0 w-full h-full"
             style={{
               objectFit: "cover",
+              objectPosition: "top center",
+              backgroundColor: "#000000",
               transform: `translateY(${translateY}) scale(${scale})`,
               zIndex: index,
               transition:
@@ -202,7 +204,7 @@ const MobileStackBox: React.FC<{
 
   return (
     <div
-      className="absolute left-4 right-4 shadow-xl rounded-[16px] px-5 py-4 flex flex-col justify-center overflow-hidden gpu-layer"
+      className="absolute left-4 right-4 shadow-xl  rounded-[16px] px-5 py-4 flex flex-col justify-center overflow-hidden gpu-layer"
       style={{
         backgroundColor,
         top: `${topOffset}px`,
@@ -218,7 +220,7 @@ const MobileStackBox: React.FC<{
       }}
     >
       {/* Header (First) - stays visible */}
-      <div className="text-base font-bold text-gray-900 leading-tight text-center mb-2">
+      <div className="text-base font-bold  text-gray-900 leading-tight text-center mb-2">
         {content.title}
       </div>
 
@@ -372,8 +374,8 @@ const StackBox: React.FC<{
                 isWhatsAppCommerce
                   ? "px-3 py-1.5 rounded-full text-xs uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50"
                   : isClickToWhatsAppAds
-                    ? "px-4 py-2 rounded-full text-xs uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50 whitespace-nowrap"
-                    : "px-4 py-2 rounded-full text-xs md:text-sm uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50"
+                  ? "px-4 py-2 rounded-full text-xs uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50 whitespace-nowrap"
+                  : "px-4 py-2 rounded-full text-xs md:text-sm uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50"
               }
               style={{ backgroundColor: tagBackground }}
             >
@@ -498,7 +500,7 @@ export default function LifeSection() {
 
         {/* --- Main Card Layer (Desktop & Mobile) --- */}
         <div
-          className="relative w-[260px] h-[60vh] md:w-full md:max-w-[450px] md:h-[84vh] md:mt-[2vh] z-20 mx-auto"
+          className="relative w-[260px] h-[60vh] md:w-full md:max-w-[380px] md:h-[84vh] md:mt-[2vh] z-20 mx-auto"
           style={{
             marginTop: isMobile ? "calc(-4vh + 35px)" : "calc(2vh + 35px)",
             transform: `translate3d(0, ${cardY}vh, 0)`,

@@ -26,18 +26,15 @@ const Navbar = () => {
         style={{ height: "70px" }}
       >
         <div className="w-full h-full max-w-[1440px] mx-auto px-4 md:px-8 flex items-center justify-between">
-
           {/* Logo Section */}
           <div className="flex items-center shrink-0">
             <a href="#hero" className="flex items-center gap-2">
+              <img src={walogo} alt="Schbang logo" className="w-auto h-8" />
               <img
-                src={walogo}
-                alt="Schbang logo"
-                className="w-auto h-8"
+                src="/schbangLogo.png"
+                alt="Schbang wordmark"
+                className="h-5 md:h-6 w-auto"
               />
-              <span className="font-bold text-neutral-900 leading-none text-xl">
-                Schbang
-              </span>
             </a>
           </div>
 
@@ -60,7 +57,11 @@ const Navbar = () => {
           <div className="lg:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="sm" className="hover:bg-transparent">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="hover:bg-transparent"
+                >
                   <span className="sr-only">Menu</span>
                   <div className="flex flex-col gap-1.5">
                     <div className="w-6 h-0.5 bg-black"></div>
@@ -78,7 +79,11 @@ const Navbar = () => {
                   <div className="mb-8">
                     <div className="flex items-center gap-2">
                       <img src={walogo} alt="Logo" className="h-8" />
-                      <span className="font-bold text-xl">Schbang</span>
+                      <img
+                        src="/schbangLogo.png"
+                        alt="Schbang wordmark"
+                        className="h-5 w-auto"
+                      />
                     </div>
                   </div>
 

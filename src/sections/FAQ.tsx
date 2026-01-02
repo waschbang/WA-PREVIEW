@@ -28,7 +28,7 @@ const FAQSection = () => {
   return (
     <section
       id="faq"
-      className="w-full bg-[#efffe8] pt-12 pb-20 md:pt-14 md:pb-24 lg:pt-16 lg:pb-28 rounded-b-[40px]"
+      className="w-full bg-[#efffe8] py-16 md:py-20 lg:py-24 rounded-b-[40px]"
       style={{ boxShadow: "0 32px 0 #4ecc5e", fontFamily: "Sora" }}
     >
       <div className="container mx-auto px-6 lg:px-12">
