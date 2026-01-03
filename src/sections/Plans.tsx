@@ -114,8 +114,8 @@ const PricingPlans = () => {
           </p> */}
         </div>
 
-        {/* GRID */}
-        <div className="grid gap-4 md:gap-5 lg:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-[1320px] mx-auto justify-items-center">
+        {/* GRID / MOBILE SCROLL */}
+        <div className="flex overflow-x-auto md:overflow-x-hidden pb-10 md:pb-0 md:grid gap-4 md:gap-5 lg:gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-[1320px] mx-auto md:justify-items-center hide-scrollbar snap-x snap-mandatory px-4 md:px-0">
           {plans.map((plan, index) => {
             const isPremium = plan.name === "Growth";
             const oneTimeLabel =
@@ -142,12 +142,11 @@ const PricingPlans = () => {
             return (
               <div
                 key={index}
-                className={`relative rounded-[20px] border border-white/5 ${isPremium
+                className={`relative rounded-[20px] border border-white/5 flex-shrink-0 snap-center w-[308px] md:w-full ${isPremium
                   ? "text-white"
                   : "bg-white text-gray-800"
                   }`}
                 style={{
-                  width: "100%",
                   maxWidth: "308px",
                   height: "794px",
                   padding: "24px",
