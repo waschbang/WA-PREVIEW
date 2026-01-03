@@ -12,113 +12,210 @@ import callIcon from "@/assets/images/HerosectionImgs/call.png";
 import mobileCircle from "@/assets/images/HerosectionImgs/mobileCircle.png";
 import mobile from "@/assets/images/HerosectionImgs/mobile.png";
 import sms from "@/assets/images/HerosectionImgs/sms.png";
+// Brand logos
+import levelLogo from "@/assets/levellogo.png";
+import imagineLogo from "@/assets/Imagine logo.png";
+import schbangLogo from "@/assets/Schbang Logo_Main.png";
+import skillhouseLogo from "@/assets/skillhouse.png";
+import pdpLogo from "@/assets/pdp.png";
 import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[50vh] bg-gradient-to-b from-[#FFFFFF] via-[#FCFEF7] to-[#EDF3C9] overflow-hidden flex flex-col justify-start pt-10 md:pt-12 pb-0 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Main Content */}
-        <div className="text-center mb-6 md:mb-8 mt-10 md:mt-12 relative z-10">
-          <h1 className="text-[2.5rem] md:text-[3rem] lg:text-[2.75rem] mt-5 font-bold text-gray-900 mb-3 leading-tight">
-            Turn Chats into 3–5X Conversions
-          </h1>
-          <p className="text-sm md:text-lg text-gray-600/90 font-normal max-w-3xl mx-auto mb-5 leading-relaxed mt-1">
-            Strategic, automated WhatsApp marketing that helps customers decide
-            faster, act sooner, and keep coming back to your brand
-          </p>
-          <a
-            href="/demo"
-            className="inline-flex items-center border border-[#D9DBE9] gap-2 bg-[#41C752] hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-xs md:text-sm mx-auto -ml-7"
-          >
-            Book a Demo
-            <img src={rightArrow} alt="right arrow" className="w-[12px]" />
-          </a>
-        </div>
+    <section className="relative h-screen bg-gradient-to-b from-[#FFFFFF] via-[#FCFEF7] to-[#EDF3C9] overflow-hidden flex flex-col">
+      {/* Main Hero Content - responsive height */}
+      <div className="h-[75vh] md:h-[85vh] flex flex-col pt-[12vh] md:pt-[10vh] px-4 relative">
+        <div className="max-w-7xl mx-auto w-full">
+          {/* Main Content - Text */}
+          <div className="text-center relative z-10">
+            <h1 className="text-[clamp(1.5rem,4vw,3rem)] font-bold text-gray-900 mb-[1vh] leading-tight">
+              Turn Chats into 3–5X Conversions
+            </h1>
+            <p className="text-[clamp(0.75rem,1.5vw,1.125rem)] text-gray-600/90 font-normal max-w-3xl mx-auto leading-relaxed mb-[3vh]">
+              Strategic, automated WhatsApp marketing that helps customers decide
+              faster, act sooner, and keep coming back to your brand
+            </p>
 
-        {/* Phone Mockup Section */}
-        <div className="relative flex items-center justify-center mt-2 md:mt-3">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[360px] md:w-[440px] h-[360px] md:h-[440px] bg-gradient-radial from-[#d5ffe5] via-[#f6fff6] to-transparent rounded-full opacity-70 translate-y-[-60px]" />
-          </div>
-          <div className="relative z-10 w-[300px] md:w-[350px] lg:w-[420px] -mt-4">
-            <img
-              src={iPhone}
-              alt="iPhone mockup"
-              className="w-full h-auto drop-shadow-2xl"
-              loading="lazy"
-            />
-            <img
-              src={greenHash}
-              alt="WhatsApp hash icon"
-              className="absolute inset-0 m-auto w-[90px] md:w-[120px] lg:w-[140px] h-auto drop-shadow-xl -translate-y-9"
-              loading="lazy"
-            />
-            <div
-              className="absolute hidden lg:block"
-              style={{ left: "-18rem", top: "16%" }}
+            {/* Button - with equal spacing from text above */}
+            <a
+              href="/demo"
+              className="inline-flex items-center border border-[#D9DBE9] gap-2 bg-[#41C752] hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-[clamp(0.7rem,1vw,0.875rem)]"
             >
-              <div className="relative">
-                <img
-                  src={shoesImage}
-                  alt="Featured shoes"
-                  className="drop-shadow-2xl w-36 md:w-44 lg:w-56"
-                  loading="lazy"
-                />
-                <div className="absolute -top-7 -right-4 w-10 md:w-11 lg:w-12 h-auto drop-shadow-lg">
+              Book a Demo
+              <img src={rightArrow} alt="right arrow" className="w-[12px]" />
+            </a>
+          </div>
+
+          {/* Phone Mockup Section - positioned at bottom of container */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-end justify-center">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-[min(320px,26vw)] md:w-[min(380px,24vw)] h-[min(320px,26vw)] md:h-[min(380px,24vw)] bg-gradient-radial from-[#d5ffe5] via-[#f6fff6] to-transparent rounded-full opacity-70 translate-y-[-60px]" />
+            </div>
+            <div className="relative z-10 w-[60vw] md:w-[min(340px,22vw)] lg:w-[min(400px,20vw)]">
+              <img
+                src={iPhone}
+                alt="iPhone mockup"
+                className="w-full h-auto drop-shadow-2xl"
+                loading="lazy"
+              />
+              <img
+                src={greenHash}
+                alt="WhatsApp hash icon"
+                className="absolute inset-0 m-auto w-[15vw] md:w-[min(100px,6vw)] lg:w-[min(120px,5vw)] h-auto drop-shadow-xl -translate-y-8"
+                loading="lazy"
+              />
+              <div
+                className="absolute hidden lg:block"
+                style={{ left: "-50%", top: "14%" }}
+              >
+                <div className="relative inline-block">
                   <img
-                    src={bagsCircle}
-                    alt="Bags background"
+                    src={shoesImage}
+                    alt="Featured shoes"
+                    className="drop-shadow-2xl w-[min(200px,11vw)]"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-0 right-0 -translate-y-[30%] translate-x-[20%] w-[25%] h-auto drop-shadow-lg">
+                    <img
+                      src={bagsCircle}
+                      alt="Bags background"
+                      className="w-full h-auto"
+                    />
+                    <img
+                      src={bags}
+                      alt="Bags"
+                      className="absolute inset-0 m-auto w-[55%] h-auto"
+                    />
+                  </div>
+                </div>
+                {/* Mobile Circle below Shoes */}
+                <div className="mt-2 relative w-[min(72px,4.5vw)] h-auto mx-auto lg:mr-auto lg:ml-12">
+                  <img
+                    src={mobileCircle}
+                    alt="Mobile circle"
                     className="w-full h-auto"
                   />
                   <img
-                    src={bags}
-                    alt="Bags"
-                    className="absolute inset-0 m-auto w-[55%] h-auto"
+                    src={mobile}
+                    alt="Mobile icon"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto"
                   />
                 </div>
               </div>
-              {/* Mobile Circle below Shoes */}
-              <div className="mt-6 relative w-16 md:w-18 lg:w-20 h-auto mx-auto lg:ml-36">
-                <img
-                  src={mobileCircle}
-                  alt="Mobile circle"
-                  className="w-full h-auto"
-                />
-                <img
-                  src={mobile}
-                  alt="Mobile icon"
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto"
-                />
-              </div>
-            </div>
 
-            <div
-              className="absolute hidden lg:block"
-              style={{ right: "-18.5rem", top: "8rem" }}
-            >
-              <div className="relative">
-                <img
-                  src={recordingImage}
-                  alt="Recording interface"
-                  className="drop-shadow-2xl w-52 md:w-60 lg:w-[19rem]"
-                  loading="lazy"
-                />
-                <img
-                  src={callIcon}
-                  alt="Call icon"
-                  className="absolute -top-1 -right-1 w-10 md:w-11 lg:w-12 h-auto drop-shadow-lg"
-                />
-              </div>
-              {/* SMS icon below Recording */}
-              <div className="mt-16 flex lg:-ml-2 translate-x-[0.5rem]">
-                <img
-                  src={sms}
-                  alt="SMS icon"
-                  className="w-12 md:w-14 lg:w-16 h-auto drop-shadow-lg"
-                />
+              <div
+                className="absolute hidden lg:block"
+                style={{ right: "-55%", top: "20%" }}
+              >
+                <div className="relative">
+                  <img
+                    src={recordingImage}
+                    alt="Recording interface"
+                    className="drop-shadow-2xl w-[min(270px,14vw)]"
+                    loading="lazy"
+                  />
+                  <img
+                    src={callIcon}
+                    alt="Call icon"
+                    className="absolute -top-1 -right-1 w-[min(50px,3vw)] h-auto drop-shadow-lg"
+                  />
+                </div>
+                {/* SMS icon below Recording */}
+                <div className="mt-20 flex lg:ml-10 translate-x-[0.5rem]">
+                  <img
+                    src={sms}
+                    alt="SMS icon"
+                    className="w-[min(56px,3.5vw)] h-auto drop-shadow-lg"
+                  />
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Trusted Brands Container - MOBILE ONLY */}
+      <div className="md:hidden w-full flex-1 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center px-4 relative z-30">
+        {/* Text at top */}
+        <div className="text-center mb-3">
+          <span className="text-gray-900 text-sm font-normal block">
+            We are trusted by
+          </span>
+          <span className="text-[#54ce63] text-base font-medium">
+            50+ brands
+          </span>
+        </div>
+
+        {/* Logo carousel - animated */}
+        <div className="w-full flex items-center overflow-hidden">
+          <div className="flex items-center gap-8 animate-marquee">
+            {/* Set 1 */}
+            <img src={levelLogo} alt="Level" className="h-8 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-8 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-20 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-20 w-auto object-contain grayscale shrink-0" />
+            {/* Set 2 */}
+            <img src={levelLogo} alt="Level" className="h-8 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-8 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-20 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-20 w-auto object-contain grayscale shrink-0" />
+            {/* Set 3 */}
+            <img src={levelLogo} alt="Level" className="h-8 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-8 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-20 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-20 w-auto object-contain grayscale shrink-0" />
+            {/* Set 4 */}
+            <img src={levelLogo} alt="Level" className="h-8 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-8 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-20 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-20 w-auto object-contain grayscale shrink-0" />
+          </div>
+        </div>
+      </div>
+
+      {/* Trusted Brands Container - DESKTOP ONLY */}
+      <div className="hidden md:flex w-full flex-1 bg-white/80 backdrop-blur-sm flex-row items-center justify-start pl-12 lg:pl-16 pr-0 relative z-30">
+        {/* Left side - Text */}
+        <div className="w-[35%] flex flex-col justify-center items-start text-left">
+          <span className="text-gray-900 text-2xl lg:text-3xl font-normal">
+            We are trusted by
+          </span>
+          <span className="text-[#54ce63] text-3xl lg:text-4xl font-medium">
+            50+ brands
+          </span>
+        </div>
+
+        {/* Right side - Brand logos carousel */}
+        <div className="flex-1 h-full flex items-center overflow-hidden">
+          <div className="flex items-center gap-12 animate-marquee">
+            {/* Set 1 */}
+            <img src={levelLogo} alt="Level" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-16 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-28 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-28 w-auto object-contain grayscale shrink-0" />
+            {/* Set 2 */}
+            <img src={levelLogo} alt="Level" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-16 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-28 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-28 w-auto object-contain grayscale shrink-0" />
+            {/* Set 3 */}
+            <img src={levelLogo} alt="Level" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-16 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-28 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-28 w-auto object-contain grayscale shrink-0" />
+            {/* Set 4 */}
+            <img src={levelLogo} alt="Level" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-16 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-28 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-28 w-auto object-contain grayscale shrink-0" />
           </div>
         </div>
       </div>

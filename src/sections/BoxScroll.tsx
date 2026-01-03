@@ -115,7 +115,7 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
           scale = 1;
         } else if (isNext) {
           translateY = "100%";
-          opacity = 0.8;
+          opacity = 0;
           scale = 1.05;
         }
 
@@ -127,8 +127,7 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
             }}
             className="absolute inset-0 w-full h-full block"
             style={{
-              objectFit: "cover",
-              objectPosition: "top center",
+              objectFit: "fill",
               backgroundColor: "#000000",
               transform: `translateY(${translateY}) scale(${scale})`,
               zIndex: index,
@@ -509,8 +508,8 @@ export default function LifeSection() {
         >
           {/* Card Background / Slideshow */}
           <div className="relative w-full h-full rounded-[24px] md:rounded-[45px] shadow-2xl bg-black border-[4px] border-black z-30 overflow-hidden box-border">
-            {/* Inner container for screen content */}
-            <div className="relative w-full h-full rounded-[20px] md:rounded-[40px] overflow-hidden bg-black">
+            {/* Inner container for screen content - radius matches outer minus border */}
+            <div className="relative w-full h-full rounded-[20px] md:rounded-[41px] overflow-hidden bg-black">
               <CardImageSlideshow activeIndex={activeVideoIndex} />
             </div>
           </div>

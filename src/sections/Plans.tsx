@@ -1,4 +1,6 @@
+"use client";
 
+import React, { useRef, useState, useEffect } from "react";
 import foundationIcon from "@/assets/icons/foundation.png";
 import premiumIcon from "@/assets/icons/premium.png";
 import scaleIcon from "@/assets/icons/scale.png";
@@ -8,6 +10,34 @@ import greenCheck from "@/assets/icons/GreenCheck.png";
 import arrowRight from "@/assets/icons/Arrow rigth.png";
 
 const PricingPlans = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Constants
+  const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const sectionHeight = rect.height;
+
+      // Calculate progress: 0 when section hits top, 1 when it leaves
+      const start = 0;
+      const end = sectionHeight - viewportHeight;
+      const progress = Math.min(Math.max((0 - rect.top) / end, 0), 1);
+
+      // Add a "hold" phase at the end (finish animation at 85%, hold for last 15%)
+      const animationProgress = Math.min(progress / 0.85, 1);
+
+      setScrollProgress(animationProgress);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const plans = [
     {
       name: "Foundation",
@@ -82,14 +112,12 @@ const PricingPlans = () => {
   return (
     <section
       id="pricing"
-      className="py-16 md:py-20"
-      style={{
-        backgroundColor: "#053E2B",
-      }}
+      ref={sectionRef}
+      className={`relative md:py-20 bg-[#053E2B] ${isMobile ? "h-[400vh]" : "py-16"}`}
     >
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className={`container mx-auto px-4 sm:px-6 ${isMobile ? "sticky top-0 h-screen flex flex-col justify-start pt-[10vh] overflow-hidden" : ""}`}>
         {/* HEADER */}
-        <div className="text-center mb-12 text-white">
+        <div className="text-center mb-4 md:mb-12 text-white flex-shrink-0">
           <h2
             className="font-sora text-center"
             style={{
@@ -99,23 +127,22 @@ const PricingPlans = () => {
               fontSize: "clamp(32px, 8vw, 48px)",
               lineHeight: "1.2",
               letterSpacing: "0.01em",
+              marginBottom: isMobile ? "0" : "initial"
             }}
           >
             Flexible plans & Pricing
           </h2>
-
-          {/* <p
-            className="text-sm md:text-base max-w-3xl mx-auto mt-4 leading-relaxed"
-            style={{ color: "#BBBBBB" }}
-          >
-            All packages include onboarding, brand-aligned content, compliance
-            assurance, and expert campaign management. Simple pricing. No
-            surprises.
-          </p> */}
         </div>
 
         {/* GRID / MOBILE SCROLL */}
-        <div className="flex overflow-x-auto md:overflow-x-hidden pb-10 md:pb-0 md:grid gap-4 md:gap-5 lg:gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-[1320px] mx-auto md:justify-items-center hide-scrollbar snap-x snap-mandatory px-4 md:px-0">
+        <div
+          className="flex md:grid gap-4 md:gap-5 lg:gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-[1320px] mx-auto md:justify-items-center w-full"
+          style={{
+            transform: isMobile ? `translateX(calc(-${scrollProgress * 3} * (100vw - 16px)))` : 'none',
+            transition: isMobile ? 'transform 0.1s linear' : 'none',
+            width: isMobile ? '100%' : 'auto'
+          }}
+        >
           {plans.map((plan, index) => {
             const isPremium = plan.name === "Growth";
             const oneTimeLabel =
@@ -142,14 +169,16 @@ const PricingPlans = () => {
             return (
               <div
                 key={index}
-                className={`relative rounded-[20px] border border-white/5 flex-shrink-0 snap-center w-[308px] md:w-full ${isPremium
+                className={`relative rounded-[20px] border border-white/5 flex-shrink-0 w-full md:w-full ${isPremium
                   ? "text-white"
                   : "bg-white text-gray-800"
                   }`}
                 style={{
-                  maxWidth: "308px",
-                  height: "794px",
-                  padding: "24px",
+                  maxWidth: "100%",
+                  width: isMobile ? "calc(100vw - 32px)" : "308px",
+                  height: isMobile ? "auto" : "794px",
+                  minHeight: isMobile ? "auto" : "794px",
+                  padding: isMobile ? "16px" : "24px",
                   overflow: "hidden",
                   borderRadius: "20px",
                   backgroundColor: isPremium ? "#1a9432" : "white",
@@ -183,13 +212,13 @@ const PricingPlans = () => {
                 )}
 
                 {/* Icon */}
-                <div style={{ marginBottom: "16px" }}>
+                <div style={{ marginBottom: isMobile ? "10px" : "16px" }}>
                   <img
                     src={iconMap[plan.name]}
                     alt={`${plan.name} icon`}
                     style={{
-                      width: "40px",
-                      height: "40px",
+                      width: isMobile ? "32px" : "40px",
+                      height: isMobile ? "32px" : "40px",
                       objectFit: "contain",
                     }}
                   />
@@ -201,7 +230,7 @@ const PricingPlans = () => {
                     style={{
                       fontFamily: "'Sora', sans-serif",
                       fontWeight: 700,
-                      fontSize: "24px",
+                      fontSize: isMobile ? "20px" : "24px",
                       marginBottom: "4px",
                       color: isPremium ? "white" : "#081b14",
                     }}
@@ -212,9 +241,9 @@ const PricingPlans = () => {
                     style={{
                       fontFamily: "'Sora', sans-serif",
                       fontWeight: 400,
-                      fontSize: "14px",
+                      fontSize: isMobile ? "12px" : "14px",
                       lineHeight: "1.4",
-                      minHeight: "40px",
+                      minHeight: isMobile ? "auto" : "40px",
                       color: isPremium ? "rgba(255,255,255,0.8)" : "#4b5563",
                     }}
                   >
@@ -223,12 +252,12 @@ const PricingPlans = () => {
                 </div>
 
                 {/* Pricing */}
-                <div style={{ marginBottom: "50px" }}>
+                <div style={{ marginBottom: isMobile ? "16px" : "50px" }}>
                   <p
                     style={{
                       fontFamily: "'Sora', sans-serif",
                       fontWeight: 700,
-                      fontSize: "24px",
+                      fontSize: isMobile ? "20px" : "24px",
                       color: isPremium ? "white" : "#053E2B",
                     }}
                   >
@@ -258,7 +287,7 @@ const PricingPlans = () => {
                 </div>
 
                 {/* CTA Button */}
-                <div style={{ marginBottom: "40px", display: "flex", justifyContent: "center" }}>
+                <div style={{ marginBottom: isMobile ? "16px" : "40px", display: "flex", justifyContent: "center" }}>
                   <a
                     href="https://calendly.com/wa-schbang/new-meeting"
                     target="_blank"
@@ -268,14 +297,14 @@ const PricingPlans = () => {
                     <button
                       style={{
                         width: "auto",
-                        padding: "14px 55px",
-                        height: "52px",
+                        padding: isMobile ? "10px 30px" : "14px 55px",
+                        height: isMobile ? "40px" : "52px",
                         borderRadius: "12px",
                         border: "1px solid #E7E8F1",
                         backgroundColor: "white",
                         color: "black",
                         fontWeight: 600,
-                        fontSize: "14px",
+                        fontSize: isMobile ? "13px" : "14px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -294,7 +323,7 @@ const PricingPlans = () => {
                   style={{
                     height: "1px",
                     backgroundColor: isPremium ? "rgba(255,255,255,0.3)" : "#e2e8f0",
-                    marginBottom: "20px",
+                    marginBottom: isMobile ? "12px" : "20px",
                   }}
                 />
 
@@ -303,10 +332,10 @@ const PricingPlans = () => {
                   style={{
                     fontFamily: "'Sora', sans-serif",
                     fontWeight: 400,
-                    fontSize: "16px",
+                    fontSize: isMobile ? "14px" : "16px",
                     lineHeight: "1.5",
-                    marginBottom: "50px",
-                    minHeight: "50px",
+                    marginBottom: isMobile ? "16px" : "50px",
+                    minHeight: isMobile ? "auto" : "50px",
                     color: isPremium ? "rgba(255,255,255,0.9)" : "#374151",
                   }}
                 >
@@ -322,7 +351,7 @@ const PricingPlans = () => {
                         display: "flex",
                         alignItems: "center",
                         gap: "10px",
-                        marginBottom: "20px",
+                        marginBottom: isMobile ? "8px" : "20px",
                       }}
                     >
                       <img
@@ -338,7 +367,7 @@ const PricingPlans = () => {
                         style={{
                           fontFamily: "'Sora', sans-serif",
                           fontWeight: 400,
-                          fontSize: "16px",
+                          fontSize: isMobile ? "14px" : "16px",
                           lineHeight: "1.4",
                           color: isPremium ? "rgba(255,255,255,0.9)" : "#374151",
                         }}
