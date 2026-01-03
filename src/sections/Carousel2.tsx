@@ -60,10 +60,10 @@ const Carousel2 = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Responsive card dimensions - slightly reduced for better framing
-    const cardWidth = isMobile ? 300 : 450;
-    const cardHeight = isMobile ? 380 : 570;
-    const gap = isMobile ? 20 : 20;
+    // Responsive card dimensions - maximized for mobile as requested
+    const cardWidth = isMobile ? 410 : 450;
+    const cardHeight = isMobile ? 680 : 570;
+    const gap = isMobile ? 20 : -20;
 
     // Calculate the carousel translation based on scroll progress
     const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
@@ -77,8 +77,6 @@ const Carousel2 = () => {
         const translateX = -scrollProgress * maxTranslate;
 
         // Calculate dynamic left padding to center the first card
-        // (Viewport Width - Card Width) / 2
-        // Default to a safe value if window is undefined, but useEffect handles hydration
         const leftPadding = (typeof window !== "undefined" ? window.innerWidth : 360) / 2 - cardWidth / 2;
 
         return (
@@ -100,12 +98,12 @@ const Carousel2 = () => {
                         overflow: "hidden",
                         display: "flex",
                         flexDirection: "column",
-                        // Align start so we can manually center first card with padding
+                        // Center vertically but align flex-start for carousel logic
+                        justifyContent: "center",
                         alignItems: "flex-start",
-                        // Space for navbar and general top gap - increased to move downward
-                        paddingTop: "140px",
-                        paddingBottom: "80px",
-                        justifyContent: "flex-start",
+                        // Increased top spacing as requested
+                        paddingTop: "120px",
+                        paddingBottom: "10px",
                     }}
                 >
                     {/* Header */}
@@ -113,17 +111,18 @@ const Carousel2 = () => {
                         style={{
                             fontFamily: "'Sora', sans-serif",
                             fontWeight: 600,
-                            // Smaller header on mobile
-                            fontSize: "24px",
+                            // Increased header size for mobile for more impact
+                            fontSize: "36px",
+                            lineHeight: "1.1",
                             color: "#171717",
                             textAlign: "center",
-                            marginBottom: "20px", // Reduced gap to keep frame tight
+                            marginBottom: "20px",
                             letterSpacing: "0.01em",
                             width: "100%",
                             padding: "0 20px",
                         }}
                     >
-                        Explore WhatsApp in Action
+                        Explore WhatsApp <br /> in Action
                     </h2>
 
                     {/* Carousel */}
@@ -132,15 +131,9 @@ const Carousel2 = () => {
                         style={{
                             display: "flex",
                             gap: `${gap}px`,
-                            // Add leftPadding to transform or container to center first item
-                            // Adding to paddingLeft of container would vary with resize better? 
-                            // Or interacting with translateX? 
-                            // Let's add it to the transform origin effectively by padding the container
                             paddingLeft: `${Math.max(0, leftPadding)}px`,
                             transform: `translateX(${translateX}px)`,
-                            transition: "transform 0.1s linear", // Changed to linear for smoother scroll-lock feel? Or stick to ease-out. User said "smoother"
-                            // ease-out can feel laggy if scroll is fast. linear follows scroll position exactly. 
-                            // But usually a slight ease is nice. Let's try to match scroll better.
+                            transition: "transform 0.1s linear",
                             willChange: "transform",
                         }}
                     >
@@ -154,7 +147,7 @@ const Carousel2 = () => {
                                     borderRadius: "20px",
                                     overflow: "hidden",
                                     background: "transparent",
-                                    // Slight scale effect for focus could be nice but keeping it simple first
+
                                 }}
                             >
                                 <img
@@ -177,8 +170,9 @@ const Carousel2 = () => {
     }
 
     // Desktop view
-    const carouselWidth = carouselImages.length * (cardWidth + gap);
-    const maxTranslate = carouselWidth - viewportWidth + 200;
+    const totalCarouselWidth = carouselImages.length * cardWidth + (carouselImages.length - 1) * gap;
+    // Account for the 60px left padding to stop exactly at the edge
+    const maxTranslate = Math.max(0, totalCarouselWidth - (viewportWidth - 60));
     const translateX = -scrollProgress * maxTranslate;
 
     return (
@@ -230,10 +224,9 @@ const Carousel2 = () => {
                     ref={carouselRef}
                     style={{
                         display: "flex",
-                        gap: `${gap}px`,
+                        gap: isMobile ? `${gap}px` : "0", // Gap doesn't support negative values
                         transform: `translateX(${translateX}px)`,
                         transition: "transform 0.1s ease-out",
-                        paddingRight: "100px",
                     }}
                 >
                     {carouselImages.map((image) => (
@@ -248,6 +241,7 @@ const Carousel2 = () => {
                                 background: "transparent",
                                 transition: "transform 0.3s ease",
                                 cursor: "pointer",
+                                marginRight: isMobile ? "0" : `${gap}px`, // Use negative margin for desktop overlap
                             }}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.transform = "translateY(-12px)";
@@ -262,7 +256,7 @@ const Carousel2 = () => {
                                 style={{
                                     width: "100%",
                                     height: "100%",
-                                    objectFit: "contain",
+                                    objectFit: "cover",
                                     objectPosition: "center",
                                     display: "block",
                                 }}
