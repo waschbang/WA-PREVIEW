@@ -28,11 +28,11 @@ const FAQSection = () => {
   return (
     <section
       id="faq"
-      className="w-full bg-[#efffe8] py-16 md:py-20 lg:py-24 rounded-b-[40px]"
+      className="w-full bg-[#efffe8] py-24 md:py-32 lg:py-44 rounded-b-[40px]"
       style={{ boxShadow: "0 32px 0 #4ecc5e", fontFamily: "Sora" }}
     >
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-10 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20">
           {/* LEFT SIDE: TITLE + SUBTEXT */}
           <div className="w-full lg:w-1/2 text-center lg:text-left">
             <h2 className="section-header leading-tight mb-4">

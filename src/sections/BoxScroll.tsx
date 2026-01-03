@@ -125,7 +125,7 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
             ref={(node) => {
               videoRefs.current[index] = node;
             }}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full block"
             style={{
               objectFit: "cover",
               objectPosition: "top center",
@@ -510,7 +510,7 @@ export default function LifeSection() {
           {/* Card Background / Slideshow */}
           <div className="relative w-full h-full rounded-[24px] md:rounded-[45px] shadow-2xl bg-black border-[4px] border-black z-30 overflow-hidden box-border">
             {/* Inner container for screen content */}
-            <div className="relative w-full h-full rounded-[20px] md:rounded-[40px] overflow-hidden bg-white">
+            <div className="relative w-full h-full rounded-[20px] md:rounded-[40px] overflow-hidden bg-black">
               <CardImageSlideshow activeIndex={activeVideoIndex} />
             </div>
           </div>

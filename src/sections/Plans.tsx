@@ -96,22 +96,22 @@ const PricingPlans = () => {
               fontFamily: "'Sora', sans-serif",
               fontWeight: 600,
               color: "white",
-              fontSize: "48px",
+              fontSize: "clamp(32px, 8vw, 48px)",
               lineHeight: "1.2",
               letterSpacing: "0.01em",
             }}
           >
-            Flexible plans for every stage
+            Flexible plans & Pricing
           </h2>
 
-          <p
+          {/* <p
             className="text-sm md:text-base max-w-3xl mx-auto mt-4 leading-relaxed"
             style={{ color: "#BBBBBB" }}
           >
             All packages include onboarding, brand-aligned content, compliance
             assurance, and expert campaign management. Simple pricing. No
             surprises.
-          </p>
+          </p> */}
         </div>
 
         {/* GRID */}
