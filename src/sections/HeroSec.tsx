@@ -1,216 +1,125 @@
-import { Button } from "@/ui/button";
-import Marquee from "react-fast-marquee";
-import pdp from "@/assets/pdp.png";
-import imagine from "@/assets/Imagine logo.png";
-import skillhouse from "@/assets/skillhouse.png";
-import schbang from "@/assets/Schbang Logo_Main.png";
-import level from "@/assets/levellogo.png";
-import bgVideo from "@/assets/vids/bg-video.mp4";
+"use client";
+
+// Import all assets
+import greenHash from "@/assets/images/HerosectionImgs/greenHash.png";
+import iPhone from "@/assets/images/HerosectionImgs/iPhone.png";
+import recordingImage from "@/assets/images/HerosectionImgs/recording.png";
+import rightArrow from "@/assets/images/HerosectionImgs/arrowRight.png";
+import shoesImage from "@/assets/images/HerosectionImgs/shoes.png";
+import bagsCircle from "@/assets/images/HerosectionImgs/bagsCircle.png";
+import bags from "@/assets/images/HerosectionImgs/bags.png";
+import callIcon from "@/assets/images/HerosectionImgs/call.png";
+import mobileCircle from "@/assets/images/HerosectionImgs/mobileCircle.png";
+import mobile from "@/assets/images/HerosectionImgs/mobile.png";
+import sms from "@/assets/images/HerosectionImgs/sms.png";
+import React from "react";
 
 const HeroSection = () => {
   return (
-    <section
-      id="hero"
-      className="
-        relative w-full 
-        min-h-[650px] sm:min-h-[720px] lg:h-[1024px]
-        overflow-hidden 
-        gpu-layer 
-        flex items-center justify-center 
-        font-sans
-      "
-      style={{ backgroundColor: "#fff9de", fontFamily: "Sora" }}
-    >
-      {/* Background video */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          disablePictureInPicture
-          {...{ 'webkit-playsinline': 'true' } as any}
-          {...{ 'x5-video-player-type': 'h5' } as any}
-          {...{ 'x5-video-player-fullscreen': 'false' } as any}
-          className="w-full h-full object-cover"
-          style={{ pointerEvents: 'none' }}
-        >
-          <source src={bgVideo} type="video/mp4" />
-        </video>
-      </div>
-
-      {/* TOP Fade (STRONGER + BIGGER) */}
-      <div className="pointer-events-none absolute top-0 left-0 w-full h-32 sm:h-40 bg-gradient-to-b from-[#fff9de] to-transparent z-[2]" />
-
-      {/* BOTTOM Fade */}
-      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-40 sm:h-56 lg:h-80 bg-gradient-to-b from-transparent via-[#fff9de]/70 to-white z-[3]" />
-
-      {/* MAIN CENTER CONTENT */}
-      <div
-        className="
-          relative z-[4] 
-          w-full 
-          text-center 
-          space-y-4 sm:space-y-5 
-          pt-16 sm:pt-20 lg:pt-24
-          pb-28 sm:pb-40 lg:pb-48
-          lg:-translate-y-10
-          px-4 sm:px-6
-        "
-      >
-        {/* TITLE */}
-        <h1
-          className="
-            font-semibold leading-tight text-neutral-900 w-full
-            text-[1.9rem] 
-            sm:text-[clamp(2.1rem,4.2vw+1rem,3.6rem)]
-            mt-8 sm:mt-0
-          "
-        >
-          Drive <span className="font-semibold">3–5X Revenue</span> with
-          <br />
-          <span className="font-semibold">
-            <span style={{ color: "#009926" }}>AI + WhatsApp Marketing</span>
-          </span>
-        </h1>
-
-        {/* SUBTEXT */}
-        <div
-          className="leading-relaxed text-center font-medium w-full"
-          style={{
-            color: "#858771",
-            fontSize: "clamp(0.95rem, 1.2vw + 0.25rem, 1.2rem)",
-            textShadow: "0 1px 2px rgba(0,0,0,0.18)",
-          }}
-        >
-          <p>
-            Schbang crafts strategic, automated WhatsApp marketing designed to
-            generate leads, build loyalty, and
-            <br className="hidden sm:inline" /> scale your brand&apos;s success.
+    <section className="relative min-h-[50vh] bg-gradient-to-b from-[#FFFFFF] via-[#FCFEF7] to-[#EDF3C9] overflow-hidden flex flex-col justify-start pt-10 md:pt-12 pb-0 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Main Content */}
+        <div className="text-center mb-6 md:mb-8 mt-10 md:mt-12 relative z-10">
+          <h1 className="text-[2.5rem] md:text-[3rem] lg:text-[2.75rem] mt-5 font-bold text-gray-900 mb-3 leading-tight">
+            Turn Chats into 3–5X Conversions
+          </h1>
+          <p className="text-sm md:text-lg text-gray-600/90 font-normal max-w-3xl mx-auto mb-5 leading-relaxed mt-1">
+            Strategic, automated WhatsApp marketing that helps customers decide
+            faster, act sooner, and keep coming back to your brand
           </p>
+          <a
+            href="/demo"
+            className="inline-flex items-center border border-[#D9DBE9] gap-2 bg-[#41C752] hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-xs md:text-sm mx-auto -ml-7"
+          >
+            Book a Demo
+            <img src={rightArrow} alt="right arrow" className="w-[12px]" />
+          </a>
         </div>
 
-        {/* CTA BUTTONS */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mt-4 w-full">
-          <a href="https://calendly.com/wa-schbang/new-meeting?month=2025-12" className="w-full sm:w-auto">
-            <Button
-              size="lg"
-              className="
-                w-full sm:w-auto 
-                h-11 sm:h-12
-                px-7 sm:px-9
-                rounded-2xl 
-                font-semibold
-                bg-transparent
-                text-neutral-900 
-                border border-neutral-300 
-                shadow-sm
-              "
-              style={{
-                fontSize: "clamp(0.95rem, 1.1vw + 0.25rem, 1.15rem)",
-                fontFamily:
-                  "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-              }}
+        {/* Phone Mockup Section */}
+        <div className="relative flex items-center justify-center mt-2 md:mt-3">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-[360px] md:w-[440px] h-[360px] md:h-[440px] bg-gradient-radial from-[#d5ffe5] via-[#f6fff6] to-transparent rounded-full opacity-70 translate-y-[-60px]" />
+          </div>
+          <div className="relative z-10 w-[300px] md:w-[350px] lg:w-[420px] -mt-4">
+            <img
+              src={iPhone}
+              alt="iPhone mockup"
+              className="w-full h-auto drop-shadow-2xl"
+              loading="lazy"
+            />
+            <img
+              src={greenHash}
+              alt="WhatsApp hash icon"
+              className="absolute inset-0 m-auto w-[90px] md:w-[120px] lg:w-[140px] h-auto drop-shadow-xl -translate-y-9"
+              loading="lazy"
+            />
+            <div
+              className="absolute hidden lg:block"
+              style={{ left: "-18rem", top: "16%" }}
             >
-              Contact Now
-            </Button>
-          </a>
-
-          {/* TRY DEMO */}
-          <div className="w-full sm:w-auto text-center">
-            <a
-              href="https://calendly.com/wa-schbang/new-meeting"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                size="lg"
-                className="
-                  w-full sm:w-[230px]
-                  h-11 sm:h-12 
-                  px-9
-                  rounded-2xl 
-                  text-white 
-                  font-semibold
-                  bg-[#00c732] 
-                  hover:bg-[#00b02c] 
-                  backdrop-blur-md 
-                  border border-white/30 
-                  ring-1 ring-white/20 
-                  shadow-md
-                "
-                style={{
-                  fontSize: "clamp(0.95rem, 1.1vw + 0.25rem, 1.15rem)",
-                  fontFamily:
-                    "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                }}
-              >
-                Try Demo
-              </Button>
-            </a>
+              <div className="relative">
+                <img
+                  src={shoesImage}
+                  alt="Featured shoes"
+                  className="drop-shadow-2xl w-36 md:w-44 lg:w-56"
+                  loading="lazy"
+                />
+                <div className="absolute -top-7 -right-4 w-10 md:w-11 lg:w-12 h-auto drop-shadow-lg">
+                  <img
+                    src={bagsCircle}
+                    alt="Bags background"
+                    className="w-full h-auto"
+                  />
+                  <img
+                    src={bags}
+                    alt="Bags"
+                    className="absolute inset-0 m-auto w-[55%] h-auto"
+                  />
+                </div>
+              </div>
+              {/* Mobile Circle below Shoes */}
+              <div className="mt-6 relative w-16 md:w-18 lg:w-20 h-auto mx-auto lg:ml-36">
+                <img
+                  src={mobileCircle}
+                  alt="Mobile circle"
+                  className="w-full h-auto"
+                />
+                <img
+                  src={mobile}
+                  alt="Mobile icon"
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-auto"
+                />
+              </div>
+            </div>
 
             <div
-              className="mt-2 font-medium"
-              style={{
-                color: "#858771",
-                fontSize: "clamp(0.78rem, 1vw + 0.2rem, 0.95rem)",
-                textShadow: "0 1px 2px rgba(0,0,0,0.18)",
-              }}
+              className="absolute hidden lg:block"
+              style={{ right: "-18.5rem", top: "8rem" }}
             >
-              {/* Takes 30 secs */}
+              <div className="relative">
+                <img
+                  src={recordingImage}
+                  alt="Recording interface"
+                  className="drop-shadow-2xl w-52 md:w-60 lg:w-[19rem]"
+                  loading="lazy"
+                />
+                <img
+                  src={callIcon}
+                  alt="Call icon"
+                  className="absolute -top-1 -right-1 w-10 md:w-11 lg:w-12 h-auto drop-shadow-lg"
+                />
+              </div>
+              {/* SMS icon below Recording */}
+              <div className="mt-16 flex lg:-ml-2 translate-x-[0.5rem]">
+                <img
+                  src={sms}
+                  alt="SMS icon"
+                  className="w-12 md:w-14 lg:w-16 h-auto drop-shadow-lg"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* MARQUEE + Trusted text */}
-      <div
-        className="
-          absolute 
-          left-0 w-full 
-          z-[5] 
-          flex flex-col items-center 
-          gap-2 sm:gap-4 lg:gap-6
-          bottom-10 sm:bottom-20 lg:bottom-32
-        "
-      >
-        {/* Trusted by text */}
-        <div
-          className="font-medium text-center w-full"
-          style={{
-            color: "#858771",
-            fontSize: "clamp(0.9rem, 1vw + 0.3rem, 1.2rem)",
-            textShadow: "0 1px 2px rgba(0,0,0,0.18)",
-          }}
-        >
-          Trusted by 50+ brands
-        </div>
-
-        {/* MARQUEE */}
-        <div className="w-full">
-          <Marquee
-            speed={40}
-            gradient={false}
-            pauseOnHover
-            autoFill
-            className="py-1 w-full"
-          >
-            {[pdp, imagine, skillhouse, schbang, level].map((src, idx) => (
-              <img
-                key={idx}
-                src={src}
-                alt="client logo"
-                className="w-auto object-contain mx-4 sm:mx-8 lg:mx-14"
-                style={{
-                  height:
-                    idx === 0 || idx === 2
-                      ? "clamp(2.4rem, 4vw, 4.4rem)"
-                      : "clamp(1.6rem, 2.8vw, 3rem)",
-                }}
-              />
-            ))}
-          </Marquee>
         </div>
       </div>
     </section>

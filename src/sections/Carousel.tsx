@@ -100,7 +100,9 @@ const OfferingsSection = () => {
     const onSelect = () => setCurrent(api.selectedScrollSnap());
     api.on("select", onSelect);
     onSelect();
-    return () => api.off("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
   }, [api]);
 
   useEffect(() => {
@@ -110,7 +112,7 @@ const OfferingsSection = () => {
   }, [api]);
 
   return (
-    <section id="offerings" className="py-12 sm:py-16 relative bg-[#f0ffe9]">
+    <section id="offerings" className="pt-24 sm:pt-32 pb-12 sm:pb-16 relative bg-[#f0ffe9]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-6 sm:mb-8">
           <h2

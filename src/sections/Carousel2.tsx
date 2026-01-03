@@ -60,10 +60,10 @@ const Carousel2 = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Responsive card dimensions
-    const cardWidth = isMobile ? 320 : 500;
-    const cardHeight = isMobile ? 407 : 636;
-    const gap = isMobile ? 20 : 10;
+    // Responsive card dimensions - slightly reduced for better framing
+    const cardWidth = isMobile ? 300 : 450;
+    const cardHeight = isMobile ? 380 : 570;
+    const gap = isMobile ? 20 : 20;
 
     // Calculate the carousel translation based on scroll progress
     const viewportWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
@@ -102,8 +102,10 @@ const Carousel2 = () => {
                         flexDirection: "column",
                         // Align start so we can manually center first card with padding
                         alignItems: "flex-start",
-                        // Push everything down significantly to avoid navbar overlap
-                        paddingTop: "120px",
+                        // Space for navbar and general top gap - increased to move downward
+                        paddingTop: "140px",
+                        paddingBottom: "80px",
+                        justifyContent: "flex-start",
                     }}
                 >
                     {/* Header */}
@@ -115,7 +117,7 @@ const Carousel2 = () => {
                             fontSize: "24px",
                             color: "#171717",
                             textAlign: "center",
-                            marginBottom: "40px",
+                            marginBottom: "20px", // Reduced gap to keep frame tight
                             letterSpacing: "0.01em",
                             width: "100%",
                             padding: "0 20px",
@@ -197,9 +199,13 @@ const Carousel2 = () => {
                     overflow: "hidden",
                     display: "flex",
                     flexDirection: "column",
+                    // Centering ensures Title + Cards stay together in one frame
                     justifyContent: "center",
                     alignItems: "flex-start",
                     paddingLeft: "60px",
+                    // Safety gap for navbar - increased to nudge content lower
+                    paddingTop: "160px",
+                    paddingBottom: "100px",
                 }}
             >
                 {/* Header */}
@@ -210,7 +216,7 @@ const Carousel2 = () => {
                         fontSize: "48px",
                         color: "#171717",
                         textAlign: "center",
-                        marginBottom: "5px",
+                        marginBottom: "15px", // Reduced gap to keep frame tight
                         letterSpacing: "0.01em",
                         width: "100%",
                         paddingRight: "60px",
