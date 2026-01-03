@@ -374,8 +374,8 @@ const StackBox: React.FC<{
                 isWhatsAppCommerce
                   ? "px-3 py-1.5 rounded-full text-xs uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50"
                   : isClickToWhatsAppAds
-                  ? "px-4 py-2 rounded-full text-xs uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50 whitespace-nowrap"
-                  : "px-4 py-2 rounded-full text-xs md:text-sm uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50"
+                    ? "px-4 py-2 rounded-full text-xs uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50 whitespace-nowrap"
+                    : "px-4 py-2 rounded-full text-xs md:text-sm uppercase tracking-wider font-medium border border-slate-900/10 bg-white/50"
               }
               style={{ backgroundColor: tagBackground }}
             >

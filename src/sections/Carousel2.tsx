@@ -61,8 +61,8 @@ const Carousel2 = () => {
     }, []);
 
     // Responsive card dimensions - maximized for mobile as requested
-    const cardWidth = isMobile ? 410 : 450;
-    const cardHeight = isMobile ? 680 : 570;
+    const cardWidth = isMobile ? 350 : 450;
+    const cardHeight = isMobile ? 580 : 570;
     const gap = isMobile ? 20 : -20;
 
     // Calculate the carousel translation based on scroll progress
@@ -102,7 +102,7 @@ const Carousel2 = () => {
                         justifyContent: "center",
                         alignItems: "flex-start",
                         // Increased top spacing as requested
-                        paddingTop: "120px",
+                        paddingTop: "140px",
                         paddingBottom: "10px",
                     }}
                 >
