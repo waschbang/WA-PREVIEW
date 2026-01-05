@@ -22,16 +22,16 @@ import React from "react";
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen bg-gradient-to-b from-[#FFFFFF] via-[#FCFEF7] to-[#EDF3C9] overflow-hidden flex flex-col">
+    <section className="relative h-[93vh] md:h-screen bg-gradient-to-b from-[#FFFFFF] via-[#FCFEF7] to-[#EDF3C9] overflow-hidden flex flex-col">
       {/* Main Hero Content - responsive height */}
-      <div className="h-[75vh] md:h-[85vh] flex flex-col pt-[12vh] md:pt-[10vh] px-4 relative">
+      <div className="h-[68vh] md:h-[85vh] flex flex-col pt-[12vh] md:pt-[10vh] px-4 relative">
         <div className="max-w-7xl mx-auto w-full">
           {/* Main Content - Text */}
           <div className="text-center relative z-10">
-            <h1 className="text-[clamp(1.5rem,4vw,3rem)] font-bold text-gray-900 mb-[1vh] leading-tight">
+            <h1 className="text-[clamp(1.3rem,3.5vw,2.7rem)] font-bold text-gray-900 mt-[1vh] md:mt-[3vh] mb-[1vh] leading-tight">
               Turn Chats into 3–5X Conversions
             </h1>
-            <p className="text-[clamp(0.75rem,1.5vw,1.125rem)] text-gray-600/90 font-normal max-w-3xl mx-auto leading-relaxed mb-[3vh]">
+            <p className="text-[clamp(0.7rem,1.25vw,1rem)] text-gray-600/90 font-normal max-w-3xl mx-auto leading-relaxed mb-[3vh]">
               Strategic, automated WhatsApp marketing that helps customers decide
               faster, act sooner, and keep coming back to your brand
             </p>
@@ -39,7 +39,7 @@ const HeroSection = () => {
             {/* Button - with equal spacing from text above */}
             <a
               href="/demo"
-              className="inline-flex items-center border border-[#D9DBE9] gap-2 bg-[#41C752] hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-[clamp(0.7rem,1vw,0.875rem)]"
+              className="inline-flex items-center border border-[#D9DBE9] gap-2 bg-[#41C752] hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-[clamp(0.7rem,1vw,0.875rem)] md:mb-[3vh]"
             >
               Book a Demo
               <img src={rightArrow} alt="right arrow" className="w-[12px]" />
@@ -47,11 +47,11 @@ const HeroSection = () => {
           </div>
 
           {/* Phone Mockup Section - positioned at bottom of container */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-end justify-center">
+          <div className="absolute -bottom-16 md:-bottom-9 left-1/2 -translate-x-1/2 flex items-end justify-center">
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-[min(320px,26vw)] md:w-[min(380px,24vw)] h-[min(320px,26vw)] md:h-[min(380px,24vw)] bg-gradient-radial from-[#d5ffe5] via-[#f6fff6] to-transparent rounded-full opacity-70 translate-y-[-60px]" />
             </div>
-            <div className="relative z-10 w-[60vw] md:w-[min(340px,22vw)] lg:w-[min(400px,20vw)]">
+            <div className="relative z-10 w-[68vw] md:w-[min(340px,22vw)] lg:w-[min(400px,20vw)]">
               <img
                 src={iPhone}
                 alt="iPhone mockup"
@@ -135,10 +135,10 @@ const HeroSection = () => {
       </div>
 
       {/* Trusted Brands Container - MOBILE ONLY */}
-      <div className="md:hidden w-full flex-1 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center px-4 relative z-30">
+      <div className="md:hidden w-full h-[13vh] bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center px-4 relative z-30 mt-auto translate-y-4">
         {/* Text at top */}
-        <div className="text-center mb-3">
-          <span className="text-gray-900 text-sm font-normal block">
+        <div className="text-center mb-1">
+          <span className="text-gray-900 text-sm font-normal pt-2 block">
             We are trusted by
           </span>
           <span className="text-[#54ce63] text-base font-medium">
@@ -147,44 +147,44 @@ const HeroSection = () => {
         </div>
 
         {/* Logo carousel - animated */}
-        <div className="w-full flex items-center overflow-hidden">
-          <div className="flex items-center gap-8 animate-marquee">
+        <div className="w-full flex items-center pb-2 overflow-hidden">
+          <div className="flex items-center gap-8  animate-marquee">
             {/* Set 1 */}
-            <img src={levelLogo} alt="Level" className="h-8 w-auto object-contain grayscale shrink-0" />
-            <img src={imagineLogo} alt="Imagine" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={schbangLogo} alt="Schbang" className="h-8 w-auto object-contain grayscale shrink-0" />
-            <img src={skillhouseLogo} alt="Skillhouse" className="h-20 w-auto object-contain grayscale shrink-0" />
-            <img src={pdpLogo} alt="PDP" className="h-20 w-auto object-contain grayscale shrink-0" />
+            <img src={levelLogo} alt="Level" className="h-6 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-10 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-6 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-12 w-auto object-contain grayscale shrink-0" />
             {/* Set 2 */}
-            <img src={levelLogo} alt="Level" className="h-8 w-auto object-contain grayscale shrink-0" />
-            <img src={imagineLogo} alt="Imagine" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={schbangLogo} alt="Schbang" className="h-8 w-auto object-contain grayscale shrink-0" />
-            <img src={skillhouseLogo} alt="Skillhouse" className="h-20 w-auto object-contain grayscale shrink-0" />
-            <img src={pdpLogo} alt="PDP" className="h-20 w-auto object-contain grayscale shrink-0" />
+            <img src={levelLogo} alt="Level" className="h-6 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-10 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-6 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-12 w-auto object-contain grayscale shrink-0" />
             {/* Set 3 */}
-            <img src={levelLogo} alt="Level" className="h-8 w-auto object-contain grayscale shrink-0" />
-            <img src={imagineLogo} alt="Imagine" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={schbangLogo} alt="Schbang" className="h-8 w-auto object-contain grayscale shrink-0" />
-            <img src={skillhouseLogo} alt="Skillhouse" className="h-20 w-auto object-contain grayscale shrink-0" />
-            <img src={pdpLogo} alt="PDP" className="h-20 w-auto object-contain grayscale shrink-0" />
+            <img src={levelLogo} alt="Level" className="h-6 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-10 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-6 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-12 w-auto object-contain grayscale shrink-0" />
             {/* Set 4 */}
-            <img src={levelLogo} alt="Level" className="h-8 w-auto object-contain grayscale shrink-0" />
-            <img src={imagineLogo} alt="Imagine" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={schbangLogo} alt="Schbang" className="h-8 w-auto object-contain grayscale shrink-0" />
-            <img src={skillhouseLogo} alt="Skillhouse" className="h-20 w-auto object-contain grayscale shrink-0" />
-            <img src={pdpLogo} alt="PDP" className="h-20 w-auto object-contain grayscale shrink-0" />
+            <img src={levelLogo} alt="Level" className="h-6 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-10 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-6 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-12 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-12 w-auto object-contain grayscale shrink-0" />
           </div>
         </div>
       </div>
 
       {/* Trusted Brands Container - DESKTOP ONLY */}
-      <div className="hidden md:flex w-full flex-1 bg-white/80 backdrop-blur-sm flex-row items-center justify-start pl-12 lg:pl-16 pr-0 relative z-30">
+      <div className="hidden md:flex w-full bg-white/80 backdrop-blur-sm flex-row items-center justify-start pl-12 lg:pl-16 pr-0 relative z-30 h-[10vh] mt-auto">
         {/* Left side - Text */}
         <div className="w-[35%] flex flex-col justify-center items-start text-left">
-          <span className="text-gray-900 text-2xl lg:text-3xl font-normal">
+          <span className="text-gray-900 text-2xl lg:text-[1.25rem] font-semibold leading-tight">
             We are trusted by
           </span>
-          <span className="text-[#54ce63] text-3xl lg:text-4xl font-medium">
+          <span className="text-[#54ce63] text-[2rem] lg:text-[1.75rem] font-semibold leading-tight">
             50+ brands
           </span>
         </div>
@@ -193,29 +193,29 @@ const HeroSection = () => {
         <div className="flex-1 h-full flex items-center overflow-hidden">
           <div className="flex items-center gap-12 animate-marquee">
             {/* Set 1 */}
-            <img src={levelLogo} alt="Level" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={imagineLogo} alt="Imagine" className="h-16 w-auto object-contain grayscale shrink-0" />
-            <img src={schbangLogo} alt="Schbang" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={skillhouseLogo} alt="Skillhouse" className="h-28 w-auto object-contain grayscale shrink-0" />
-            <img src={pdpLogo} alt="PDP" className="h-28 w-auto object-contain grayscale shrink-0" />
+            <img src={levelLogo} alt="Level" className="h-7 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-10 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-7 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-14 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-14 w-auto object-contain grayscale shrink-0" />
             {/* Set 2 */}
-            <img src={levelLogo} alt="Level" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={imagineLogo} alt="Imagine" className="h-16 w-auto object-contain grayscale shrink-0" />
-            <img src={schbangLogo} alt="Schbang" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={skillhouseLogo} alt="Skillhouse" className="h-28 w-auto object-contain grayscale shrink-0" />
-            <img src={pdpLogo} alt="PDP" className="h-28 w-auto object-contain grayscale shrink-0" />
+            <img src={levelLogo} alt="Level" className="h-7 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-10 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-7 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-14 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-14 w-auto object-contain grayscale shrink-0" />
             {/* Set 3 */}
-            <img src={levelLogo} alt="Level" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={imagineLogo} alt="Imagine" className="h-16 w-auto object-contain grayscale shrink-0" />
-            <img src={schbangLogo} alt="Schbang" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={skillhouseLogo} alt="Skillhouse" className="h-28 w-auto object-contain grayscale shrink-0" />
-            <img src={pdpLogo} alt="PDP" className="h-28 w-auto object-contain grayscale shrink-0" />
+            <img src={levelLogo} alt="Level" className="h-7 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-10 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-7 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-14 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-14 w-auto object-contain grayscale shrink-0" />
             {/* Set 4 */}
-            <img src={levelLogo} alt="Level" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={imagineLogo} alt="Imagine" className="h-16 w-auto object-contain grayscale shrink-0" />
-            <img src={schbangLogo} alt="Schbang" className="h-12 w-auto object-contain grayscale shrink-0" />
-            <img src={skillhouseLogo} alt="Skillhouse" className="h-28 w-auto object-contain grayscale shrink-0" />
-            <img src={pdpLogo} alt="PDP" className="h-28 w-auto object-contain grayscale shrink-0" />
+            <img src={levelLogo} alt="Level" className="h-7 w-auto object-contain grayscale shrink-0" />
+            <img src={imagineLogo} alt="Imagine" className="h-10 w-auto object-contain grayscale shrink-0" />
+            <img src={schbangLogo} alt="Schbang" className="h-7 w-auto object-contain grayscale shrink-0" />
+            <img src={skillhouseLogo} alt="Skillhouse" className="h-14 w-auto object-contain grayscale shrink-0" />
+            <img src={pdpLogo} alt="PDP" className="h-14 w-auto object-contain grayscale shrink-0" />
           </div>
         </div>
       </div>

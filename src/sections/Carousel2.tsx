@@ -61,8 +61,8 @@ const Carousel2 = () => {
     }, []);
 
     // Responsive card dimensions - maximized for mobile as requested
-    const cardWidth = isMobile ? 350 : 450;
-    const cardHeight = isMobile ? 580 : 570;
+    const cardWidth = isMobile ? 320 : 420;
+    const cardHeight = isMobile ? 540 : 540;
     const gap = isMobile ? 20 : -20;
 
     // Calculate the carousel translation based on scroll progress
@@ -116,6 +116,7 @@ const Carousel2 = () => {
                             lineHeight: "1.1",
                             color: "#171717",
                             textAlign: "center",
+                            marginTop: "40px",
                             marginBottom: "20px",
                             letterSpacing: "0.01em",
                             width: "100%",
@@ -210,6 +211,7 @@ const Carousel2 = () => {
                         fontSize: "48px",
                         color: "#171717",
                         textAlign: "center",
+                        marginTop: "40px",
                         marginBottom: "15px", // Reduced gap to keep frame tight
                         letterSpacing: "0.01em",
                         width: "100%",
