@@ -73,15 +73,16 @@ const BOX_CONTENT = [
 
 // --- Helper Components ---
 
-const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
+const CardImageSlideshow: React.FC<{ activeIndex: number; shouldPlay: boolean }> = ({
   activeIndex,
+  shouldPlay,
 }) => {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
-      if (index === activeIndex) {
+      if (index === activeIndex && shouldPlay) {
         video.currentTime = 0;
         const playPromise = video.play();
         if (playPromise?.catch) {
@@ -92,7 +93,7 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
         video.currentTime = 0;
       }
     });
-  }, [activeIndex]);
+  }, [activeIndex, shouldPlay]);
 
   return (
     <div className="absolute inset-0 w-full h-full z-0 overflow-hidden bg-gray-900">
@@ -139,7 +140,6 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
             src={src}
             muted
             loop
-            autoPlay
             playsInline
             preload="auto"
           />
@@ -510,7 +510,10 @@ export default function LifeSection() {
           <div className="relative w-full h-full rounded-[24px] md:rounded-[45px] shadow-2xl bg-black border-[4px] border-black z-30 overflow-hidden box-border">
             {/* Inner container for screen content - radius matches outer minus border */}
             <div className="relative w-full h-full rounded-[20px] md:rounded-[41px] overflow-hidden bg-black">
-              <CardImageSlideshow activeIndex={activeVideoIndex} />
+              <CardImageSlideshow
+                activeIndex={activeVideoIndex}
+                shouldPlay={rawScrollProgress > 0}
+              />
             </div>
           </div>
 

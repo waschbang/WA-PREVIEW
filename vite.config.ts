@@ -9,11 +9,8 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     allowedHosts: [
-      // Allow your ngrok domain
+      "milena-nonremittable-ilana.ngrok-free.dev",
       "acrodrome-zeugmatically-coreen.ngrok-free.dev",
-
-
-      // Allow ANY future ngrok domains automatically
       "*.ngrok-free.dev",
       "*.ngrok-free.app",
       "*.ngrok.io"

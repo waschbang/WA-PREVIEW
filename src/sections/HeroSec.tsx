@@ -18,17 +18,25 @@ import imagineLogo from "@/assets/Imagine logo.png";
 import schbangLogo from "@/assets/Schbang Logo_Main.png";
 import skillhouseLogo from "@/assets/skillhouse.png";
 import pdpLogo from "@/assets/pdp.png";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const HeroSection = () => {
+  const [mounted, setMounted] = useState(false);
+  const [isMac, setIsMac] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    setIsMac(typeof window !== "undefined" && /Mac/i.test(navigator.userAgent));
+  }, []);
+
   return (
     <section className="relative h-[93vh] md:h-screen bg-gradient-to-b from-[#FFFFFF] via-[#FCFEF7] to-[#EDF3C9] overflow-hidden flex flex-col">
       {/* Main Hero Content - responsive height */}
-      <div className="h-[68vh] md:h-[85vh] flex flex-col pt-[12vh] md:pt-[10vh] px-4 relative">
+      <div className={`flex flex-col px-4 relative ${mounted && isMac ? "flex-1 pt-[10vh] md:pt-[12vh]" : "h-[68vh] md:h-[85vh] pt-[12vh] md:pt-[10vh]"}`}>
         <div className="max-w-7xl mx-auto w-full">
           {/* Main Content - Text */}
           <div className="text-center relative z-10">
-            <h1 className="text-[clamp(1.3rem,3.5vw,2.7rem)] font-bold text-gray-900 mt-[1vh] md:mt-[3vh] mb-[1vh] leading-tight">
+            <h1 className={`text-[clamp(1.3rem,3.5vw,2.7rem)] font-bold text-gray-900 mb-[1vh] leading-tight ${mounted && isMac ? "mt-[2vh]" : "mt-[1vh] md:mt-[3vh]"}`}>
               Turn Chats into 3–5X Conversions
             </h1>
             <p className="text-[clamp(0.7rem,1.25vw,1rem)] text-gray-600/90 font-normal max-w-3xl mx-auto leading-relaxed mb-[3vh]">
@@ -39,7 +47,7 @@ const HeroSection = () => {
             {/* Button - with equal spacing from text above */}
             <a
               href="/demo"
-              className="inline-flex items-center border border-[#D9DBE9] gap-2 bg-[#41C752] hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-[clamp(0.7rem,1vw,0.875rem)] md:mb-[3vh]"
+              className={`inline-flex items-center border border-[#D9DBE9] gap-2 bg-[#41C752] hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-[clamp(0.7rem,1vw,0.875rem)] ${mounted && isMac ? "mt-[4vh] mb-[4vh]" : "md:mb-[3vh]"}`}
             >
               Book a Demo
               <img src={rightArrow} alt="right arrow" className="w-[12px]" />
@@ -47,11 +55,11 @@ const HeroSection = () => {
           </div>
 
           {/* Phone Mockup Section - positioned at bottom of container */}
-          <div className="absolute -bottom-16 md:-bottom-9 left-1/2 -translate-x-1/2 flex items-end justify-center">
+          <div className={`absolute left-1/2 -translate-x-1/2 flex items-end justify-center ${mounted && isMac ? "-bottom-14 md:bottom-[-1.2rem]" : "-bottom-16 md:-bottom-9"}`}>
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-[min(320px,26vw)] md:w-[min(380px,24vw)] h-[min(320px,26vw)] md:h-[min(380px,24vw)] bg-gradient-radial from-[#d5ffe5] via-[#f6fff6] to-transparent rounded-full opacity-70 translate-y-[-60px]" />
             </div>
-            <div className="relative z-10 w-[68vw] md:w-[min(340px,22vw)] lg:w-[min(400px,20vw)]">
+            <div className={`relative z-10 w-[68vw] ${mounted && isMac ? "md:w-[min(430px,27.5vw)] lg:w-[min(520px,25.5vw)]" : "md:w-[min(340px,22vw)] lg:w-[min(400px,20vw)]"}`}>
               <img
                 src={iPhone}
                 alt="iPhone mockup"
@@ -61,18 +69,18 @@ const HeroSection = () => {
               <img
                 src={greenHash}
                 alt="WhatsApp hash icon"
-                className="absolute inset-0 m-auto w-[15vw] md:w-[min(100px,6vw)] lg:w-[min(120px,5vw)] h-auto drop-shadow-xl -translate-y-8"
+                className={`absolute inset-0 m-auto h-auto drop-shadow-xl -translate-y-8 ${mounted && isMac ? "w-[17vw] md:w-[min(115px,7vw)] lg:w-[min(140px,6vw)]" : "w-[15vw] md:w-[min(100px,6vw)] lg:w-[min(120px,5vw)]"}`}
                 loading="lazy"
               />
               <div
                 className="absolute hidden lg:block"
-                style={{ left: "-50%", top: "14%" }}
+                style={{ left: mounted && isMac ? "-58%" : "-50%", top: "14%" }}
               >
                 <div className="relative inline-block">
                   <img
                     src={shoesImage}
                     alt="Featured shoes"
-                    className="drop-shadow-2xl w-[min(200px,11vw)]"
+                    className={`drop-shadow-2xl ${mounted && isMac ? "w-[min(230px,13vw)]" : "w-[min(200px,11vw)]"}`}
                     loading="lazy"
                   />
                   <div className="absolute top-0 right-0 -translate-y-[30%] translate-x-[20%] w-[25%] h-auto drop-shadow-lg">
@@ -89,7 +97,7 @@ const HeroSection = () => {
                   </div>
                 </div>
                 {/* Mobile Circle below Shoes */}
-                <div className="mt-2 relative w-[min(72px,4.5vw)] h-auto mx-auto lg:mr-auto lg:ml-12">
+                <div className={`mt-2 relative h-auto mx-auto lg:mr-auto lg:ml-12 ${mounted && isMac ? "w-[min(82px,5vw)]" : "w-[min(72px,4.5vw)]"}`}>
                   <img
                     src={mobileCircle}
                     alt="Mobile circle"
@@ -111,13 +119,13 @@ const HeroSection = () => {
                   <img
                     src={recordingImage}
                     alt="Recording interface"
-                    className="drop-shadow-2xl w-[min(270px,14vw)]"
+                    className={`drop-shadow-2xl ${mounted && isMac ? "w-[min(310px,16vw)]" : "w-[min(270px,14vw)]"}`}
                     loading="lazy"
                   />
                   <img
                     src={callIcon}
                     alt="Call icon"
-                    className="absolute -top-1 -right-1 w-[min(50px,3vw)] h-auto drop-shadow-lg"
+                    className={`absolute -top-1 -right-1 h-auto drop-shadow-lg ${mounted && isMac ? "w-[min(60px,3.5vw)]" : "w-[min(50px,3vw)]"}`}
                   />
                 </div>
                 {/* SMS icon below Recording */}
@@ -125,7 +133,7 @@ const HeroSection = () => {
                   <img
                     src={sms}
                     alt="SMS icon"
-                    className="w-[min(56px,3.5vw)] h-auto drop-shadow-lg"
+                    className={`h-auto drop-shadow-lg ${mounted && isMac ? "w-[min(65px,4.5vw)]" : "w-[min(56px,3.5vw)]"}`}
                   />
                 </div>
               </div>
@@ -137,11 +145,11 @@ const HeroSection = () => {
       {/* Trusted Brands Container - MOBILE ONLY */}
       <div className="md:hidden w-full h-[13vh] bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center px-4 relative z-30 mt-auto translate-y-4">
         {/* Text at top */}
-        <div className="text-center mb-1">
-          <span className="text-gray-900 text-sm font-normal pt-2 block">
+        <div className="text-center mb-1 flex items-center justify-center gap-1.5 pt-2">
+          <span className="text-gray-900 text-sm font-normal">
             We are trusted by
           </span>
-          <span className="text-[#54ce63] text-base font-medium">
+          <span className="text-[#54ce63] text-sm font-medium">
             50+ brands
           </span>
         </div>
@@ -180,11 +188,11 @@ const HeroSection = () => {
       {/* Trusted Brands Container - DESKTOP ONLY */}
       <div className="hidden md:flex w-full bg-white/80 backdrop-blur-sm flex-row items-center justify-start pl-12 lg:pl-16 pr-0 relative z-30 h-[10vh] mt-auto">
         {/* Left side - Text */}
-        <div className="w-[35%] flex flex-col justify-center items-start text-left">
+        <div className="w-[35%]  pt-2 pb-2 flex flex-col justify-center items-start text-left">
           <span className="text-gray-900 text-2xl lg:text-[1.25rem] font-semibold leading-tight">
             We are trusted by
           </span>
-          <span className="text-[#54ce63] text-[2rem] lg:text-[1.75rem] font-semibold leading-tight">
+          <span className="text-[#54ce63] text-[2rem] lg:text-[1.25rem] font-semibold leading-tight">
             50+ brands
           </span>
         </div>
