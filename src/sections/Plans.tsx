@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import foundationIcon from "@/assets/icons/foundation.png";
-import premiumIcon from "@/assets/icons/premium.png";
-import scaleIcon from "@/assets/icons/scale.png";
-import customIcon from "@/assets/icons/custom.png";
-import whiteCheck from "@/assets/icons/WhiteCheck.png";
-import greenCheck from "@/assets/icons/GreenCheck.png";
+import foundationIcon from "@/assets/icons/Foundation.svg";
+import premiumIcon from "@/assets/icons/Premium.svg";
+import scaleIcon from "@/assets/icons/Scale.svg";
+import customIcon from "@/assets/icons/Custom.svg";
+import greenCheck from "@/assets/icons/GreenCheck.svg";
+import checkCircle from "@/assets/icons/Check circle.svg";
 import arrowRight from "@/assets/icons/Arrow rigth.png";
 
 const PricingPlans = () => {
@@ -34,7 +34,8 @@ const PricingPlans = () => {
       setScrollProgress(animationProgress);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -138,10 +139,11 @@ const PricingPlans = () => {
         <div
           className="flex md:grid gap-4 md:gap-5 lg:gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-[1320px] mx-auto md:justify-items-center w-full"
           style={{
-            transform: isMobile ? `translateX(calc(-${scrollProgress * 3} * (100vw - 16px)))` : 'none',
-            transition: isMobile ? 'transform 0.1s linear' : 'none',
+            transform: isMobile ? `translate3d(calc(-${scrollProgress * 3} * (100vw - 16px)), 0, 0)` : 'none',
+            backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility: 'hidden',
             width: isMobile ? '100%' : 'auto'
-          }}
+          } as React.CSSProperties}
         >
           {plans.map((plan, index) => {
             const isPremium = plan.name === "Growth";
@@ -199,12 +201,16 @@ const PricingPlans = () => {
                       position: "absolute",
                       top: "16px",
                       right: "16px",
-                      backgroundColor: "#E8F5E9",
-                      color: "#2E7D32",
+                      background: "linear-gradient(180deg, #dcd7d7ff 0%, #FFFFFF 100%)",
+                      color: "#000000",
+                      fontFamily: "'Sora', sans-serif",
                       fontSize: "12px",
-                      fontWeight: 500,
-                      padding: "6px 12px",
-                      borderRadius: "20px",
+                      fontWeight: 400,
+                      padding: "10px 12px",
+                      borderRadius: "200px",
+                      boxShadow: "inset 0px 1px 2px 0px rgba(0, 0, 0, 0.1)",
+                      textAlign: "center",
+                      lineHeight: "1",
                     }}
                   >
                     Most Popular
@@ -295,6 +301,7 @@ const PricingPlans = () => {
                     style={{ textDecoration: "none" }}
                   >
                     <button
+                      className="group relative overflow-hidden"
                       style={{
                         width: "auto",
                         padding: isMobile ? "10px 30px" : "14px 55px",
@@ -312,8 +319,13 @@ const PricingPlans = () => {
                         cursor: "pointer",
                       }}
                     >
-                      <span>{isPremium ? "Book a Demo" : "Get a Quote"}</span>
-                      <img src={arrowRight} alt="arrow" style={{ width: "14px", height: "14px" }} />
+                      {/* Color fill animation from left to right */}
+                      <span
+                        className="absolute inset-0 bg-gray-100 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"
+                        style={{ borderRadius: "12px" }}
+                      />
+                      <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-[-4px]">{isPremium ? "Book a Demo" : "Get a Quote"}</span>
+                      <img src={arrowRight} alt="arrow" className="relative z-10 transition-transform duration-300 group-hover:translate-x-[4px]" style={{ width: "14px", height: "14px" }} />
                     </button>
                   </a>
                 </div>
@@ -355,7 +367,7 @@ const PricingPlans = () => {
                       }}
                     >
                       <img
-                        src={isPremium ? whiteCheck : greenCheck}
+                        src={isPremium ? checkCircle : greenCheck}
                         alt="check"
                         style={{
                           width: "18px",

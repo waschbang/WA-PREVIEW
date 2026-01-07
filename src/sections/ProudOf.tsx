@@ -107,7 +107,7 @@ const CaseStudiesSection = () => {
     <section
       id="case-studies"
       className="pt-10 sm:pt-12 md:pt-16 pb-12 sm:pb-16"
-      style={{ backgroundColor: "#f0ffe9", fontFamily: "Sora" }}
+      style={{ backgroundColor: "#F4F4F4", fontFamily: "Sora" }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
 
@@ -153,21 +153,18 @@ const CaseStudiesSection = () => {
                 <button
                   key={idx}
                   onClick={() => setActive(idx)}
-                  className={`relative w-full h-full text-left pl-4 sm:pl-6 pr-4 sm:pr-6 py-4 sm:py-6 flex items-center border-b border-neutral-200 last:border-b-0 transition-colors ${
-                    isActive
-                      ? "bg-gradient-to-r from-whatsapp/10 to-transparent"
-                      : "hover:bg-neutral-50"
-                  }`}
+                  className={`relative w-full h-full text-left pl-4 sm:pl-6 pr-4 sm:pr-6 py-4 sm:py-6 flex items-center border-b border-neutral-200 last:border-b-0 transition-colors ${isActive
+                    ? "bg-gradient-to-r from-whatsapp/10 to-transparent"
+                    : "hover:bg-neutral-50"
+                    }`}
                 >
                   <span
-                    className={`absolute left-0 top-0 h-full w-1 sm:w-1.5 ${
-                      isActive ? "bg-whatsapp" : "bg-transparent"
-                    }`}
+                    className={`absolute left-0 top-0 h-full w-1 sm:w-1.5 ${isActive ? "bg-whatsapp" : "bg-transparent"
+                      }`}
                   />
                   <div
-                    className={`font-semibold leading-snug w-full ${
-                      isActive ? "text-neutral-900" : "text-neutral-700"
-                    }`}
+                    className={`font-semibold leading-snug w-full ${isActive ? "text-neutral-900" : "text-neutral-700"
+                      }`}
                     style={{
                       fontSize: "clamp(0.9rem, 1.2vw + 0.2rem, 1rem)",
                     }}

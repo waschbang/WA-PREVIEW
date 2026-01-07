@@ -1,10 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/ui/sheet";
 import walogo from "@/assets/logo/walogo.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Show navbar when scrolling up, hide when scrolling down
+      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const navItems = [
     { name: "Services", href: "#services" },
@@ -20,10 +40,11 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Main Navbar - Always visible, glass effect */}
+      {/* Main Navbar - Shows on scroll up, not sticky on mobile */}
       <nav
-        className="fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full bg-white/20 backdrop-blur-2xl border-b border-white/30 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
-        style={{ height: "70px" }}
+        className={`md:fixed md:top-0 md:left-1/2 md:-translate-x-1/2 z-50 w-full bg-white/20 backdrop-blur-2xl border-b border-white/30 transition-transform duration-300 ${isVisible ? "md:translate-y-0" : "md:-translate-y-full"
+          }`}
+        style={{ height: "85px" }}
       >
         <div className="w-full h-full max-w-[1440px] mx-auto px-4 md:px-8 flex items-center justify-between">
           {/* Logo Section */}

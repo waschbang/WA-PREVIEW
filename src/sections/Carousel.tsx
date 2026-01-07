@@ -112,7 +112,7 @@ const OfferingsSection = () => {
   }, [api]);
 
   return (
-    <section id="offerings" className="pt-24 sm:pt-32 pb-12 sm:pb-16 relative bg-[#f0ffe9]">
+    <section id="offerings" className="pt-24 sm:pt-32 pb-12 sm:pb-16 relative bg-[#rgb(255, 255, 255)]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-6 sm:mb-8">
           <h2

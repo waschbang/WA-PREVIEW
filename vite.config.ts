@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
     allowedHosts: [
       // Allow your ngrok domain
       "acrodrome-zeugmatically-coreen.ngrok-free.dev",
-
+      "deliquescent-kyle-absorbedly.ngrok-free.dev",
 
       // Allow ANY future ngrok domains automatically
       "*.ngrok-free.dev",

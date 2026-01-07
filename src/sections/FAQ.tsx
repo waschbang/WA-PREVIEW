@@ -28,16 +28,16 @@ const FAQSection = () => {
   return (
     <section
       id="faq"
-      className="w-full bg-[#efffe8] py-24 md:py-32 lg:py-44 rounded-b-[40px]"
-      style={{ boxShadow: "0 32px 0 #4ecc5e", fontFamily: "Sora" }}
+      className="w-full bg-[#F4F4F4] py-24 md:py-32 lg:py-44 rounded-b-[40px]"
+      style={{ boxShadow: "0 32px 0 #F4F4F4", fontFamily: "Sora" }}
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20">
           {/* LEFT SIDE: TITLE + SUBTEXT */}
           <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <h2 className="section-header leading-tight mb-4">
+            <h2 className="section-header leading-tight mb-4" style={{ fontFamily: "'Sora', sans-serif" }}>
               <span className="block">Frequently Asked</span>
-              <span className="block mt-4 text-whatsapp">Questions</span>
+              <span className="block mt-1 text-whatsapp">Questions</span>
             </h2>
 
             <p

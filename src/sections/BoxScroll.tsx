@@ -3,13 +3,13 @@ import React, { useRef, useState, useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 
 // --- Assets ---
-import aiCallingVideo from "@/assets/vids/AI Calling.mov";
-import chatflowVideo from "@/assets/vids/Chatbot.mov";
-import webViewVideo from "@/assets/vids/Web View.mov";
-import ctwaVideo from "@/assets/vids/CTWA.mov";
-import commerceVideo from "@/assets/vids/Commerce.mov";
-import campaignsVideo from "@/assets/vids/Campaigns.mov";
-import crmVideo from "@/assets/vids/CRM.mov";
+import aiCallingVideo from "@/assets/vids/AI Calling 2.mov";
+import chatflowVideo from "@/assets/vids/Chatbot Video 2.mov";
+import webViewVideo from "@/assets/vids/Web view 2.mov";
+import ctwaVideo from "@/assets/vids/CTWA Video 2.mov";
+import commerceVideo from "@/assets/vids/WA Commerce Video 2.mov";
+import campaignsVideo from "@/assets/vids/WA Campaign 2.mov";
+import crmVideo from "@/assets/vids/CRM Video from WA Videos.mov";
 
 const VIDEOS = [
   aiCallingVideo,
@@ -120,6 +120,7 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
         }
 
         return (
+
           <video
             key={`${src}-${index}`}
             ref={(node) => {
@@ -132,7 +133,7 @@ const CardImageSlideshow: React.FC<{ activeIndex: number }> = ({
               transform: `translateY(${translateY}) scale(${scale})`,
               zIndex: index,
               transition:
-                "transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1)",
+                "transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)",
               opacity,
               willChange: "transform, opacity",
             }}
@@ -214,7 +215,7 @@ const MobileStackBox: React.FC<{
         willChange: "transform",
         backfaceVisibility: "hidden",
         WebkitBackfaceVisibility: "hidden",
-        transition: "height 0.15s ease-out, opacity 0.15s ease-out",
+        transition: "height 0.25s ease-out, opacity 0.25s ease-out, transform 0.25s ease-out",
         contain: "layout style paint",
       }}
     >
@@ -283,9 +284,11 @@ const StackBox: React.FC<{
   const clampedStack = Math.max(0, Math.min(1, stackProgress));
 
   // --- Visual Properties ---
-  const startOffsetY = 300;
-  const translateY = startOffsetY * (1 - Math.pow(clampedEntry, 3));
-  const opacity = Math.max(0, Math.min(1, clampedEntry * 5));
+  // Use smoother easing function for card entrance
+  const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
+  const startOffsetY = 200;
+  const translateY = startOffsetY * (1 - easeOutQuart(clampedEntry));
+  const opacity = Math.max(0, Math.min(1, clampedEntry * 3));
 
   const initialHeight = 280;
   const stackedHeight = 80;
@@ -347,7 +350,7 @@ const StackBox: React.FC<{
         className="absolute top-[75px] left-6 right-6 bottom-6 flex flex-col justify-between overflow-hidden"
         style={{
           opacity: contentOpacity,
-          transition: "opacity 0.2s ease-out",
+          transition: "opacity 0.35s ease-out",
           top: isWhatsAppCommerce ? "68px" : undefined,
           bottom: isWhatsAppCommerce ? "16px" : undefined,
           ...(isClickToWhatsAppAds ? { top: "70px", bottom: "18px" } : null),
@@ -411,8 +414,8 @@ export default function LifeSection() {
       let progress = scrolled / scrollableDistance;
       progress = Math.max(0, Math.min(1, progress));
 
-      // Lower interpolation factor for smoother iOS animations
-      const smoothedProgress = lastProgress + (progress - lastProgress) * 0.15;
+      // Very smooth interpolation for consistent animation speed
+      const smoothedProgress = lastProgress + (progress - lastProgress) * 0.05;
       lastProgress = smoothedProgress;
 
       setRawScrollProgress(smoothedProgress);
@@ -462,10 +465,14 @@ export default function LifeSection() {
   const activeBoxIndex = Math.floor(rawStepPosition);
   const currentStepProgress = rawStepPosition - activeBoxIndex;
 
-  // Hold the previous video's frame until the next card is mostly in view
-  const VIDEO_SWITCH_THRESHOLD = 0.65;
+  // Video switches when the new card has entered enough to be the focus
+  // Lower threshold = video changes earlier when new card starts entering
+  const VIDEO_SWITCH_THRESHOLD = 0.35;
   let activeVideoIndex = activeBoxIndex;
-  if (currentStepProgress < VIDEO_SWITCH_THRESHOLD && activeBoxIndex > 0) {
+  // Switch to new video once the card has entered past the threshold
+  if (currentStepProgress >= VIDEO_SWITCH_THRESHOLD) {
+    activeVideoIndex = activeBoxIndex;
+  } else if (activeBoxIndex > 0) {
     activeVideoIndex = activeBoxIndex - 1;
   }
   activeVideoIndex = Math.max(0, Math.min(VIDEOS.length - 1, activeVideoIndex));
@@ -474,10 +481,10 @@ export default function LifeSection() {
     <section
       id="services"
       ref={sectionRef}
-      className="relative w-full bg-white"
-      style={{ height: "750vh" }}
+      className="relative w-full bg-[#F4F4F4] -mt-20"
+      style={{ height: "900vh" }}
     >
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start pt-[10vh] md:justify-center md:pt-0 overflow-hidden">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start md:justify-center md:pt-0 overflow-hidden">
         {/* --- Header Layer --- */}
         <div
           className="absolute top-[5vh] md:top-[14vh] w-full text-center z-10 px-2 md:px-4 origin-center"
@@ -499,7 +506,7 @@ export default function LifeSection() {
 
         {/* --- Main Card Layer (Desktop & Mobile) --- */}
         <div
-          className="relative w-[260px] h-[60vh] md:w-full md:max-w-[380px] md:h-[84vh] md:mt-[2vh] z-20 mx-auto"
+          className="relative w-[260px] aspect-[1/2] md:w-full md:max-w-[380px] md:aspect-[1/2] md:mt-[2vh] z-20 mx-auto"
           style={{
             marginTop: isMobile ? "calc(-4vh + 35px)" : "calc(2vh + 35px)",
             transform: `translate3d(0, ${cardY}vh, 0)`,
